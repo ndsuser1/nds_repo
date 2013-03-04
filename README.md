@@ -15,7 +15,7 @@ nds_repo
 
     $ touch A B C
 
-まだ、リポジトリには追加していない。
+リポジトリに追加しないで、ステータスを見ると
 
     $ git status
     # On branch master
@@ -27,9 +27,12 @@ nds_repo
     #       C
     nothing added to commit but untracked files present (use "git add" to track)
 
-リポジトリに追加（add）して、同じようにステータスを見ると
+リポジトリに追加（add）して、
 
     $ git add A B C
+
+同じようにステータスを見ると
+
     $ git status
     # On branch master
     # Changes to be committed:
@@ -40,7 +43,7 @@ nds_repo
     #       new file:   C
     #
 
-それじゃあ、stage されたファイルを commit しましょう。
+それじゃあ、この add してステージされたファイルを commit しましょう。
 
     $ git commit -m 'add some files'
     [master c6c669d] add some files
@@ -52,13 +55,16 @@ nds_repo
     After doing this, you may fix the identity used for this commit with:
         git commit --amend --reset-author
 
-名前とメアドを設定して、やり直しの機会をもらったので、
-グローバルなオプションは変更せず、このリポジトリに設定しておく。
+名前とメアドを設定して、やり直しもできると丁寧なお言葉を頂きました。
+
+では、グローバルなオプションはそのままにして、このリポジトリのみで使う
+名前とメアドを設定しておく。
 
     $ git config user.name "YAMADA, Taro"
     $ git config user.email yamada.t@example.com
 
-で、やり直し、作成者の名前も変更して、push する。
+commit のやり直し。作成者の名前も変更するために --reset-auther も付ける。
+それから、push する。
 
     $ git commit -m 'add some files' --amend --reset-author
     $ git push
